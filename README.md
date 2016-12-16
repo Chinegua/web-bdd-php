@@ -5,7 +5,7 @@
     * Modifica registro
     * Realiza busqueda
 
-Lanzar ````index.php````
+Lanzar ```index.php```
 
 Autores:
 
