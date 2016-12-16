@@ -9,5 +9,5 @@ Lanzar ```index.php```
 
 Autores:
 
-    * Aitor Bernal Falcón
-    * Joshua Pérez García
+* Aitor Bernal Falcón
+* Joshua Pérez García
