@@ -4,8 +4,17 @@
     $div=($_GET['div']);
     $num_parse=($_GET['num_parse']);
     $pagina=($_GET['pagina']);
+    $v=($_GET['v']);
     $pag = $pagina * $num_parse;
+    if ( $v == 0){
+    $sql = "select * from usuarios ORDER BY usuario DESC LIMIT ".$num_parse." OFFSET ".$pag;
+    }
+    if ( $v == 1){
     $sql = "select * from usuarios LIMIT ".$num_parse." OFFSET ".$pag;
+    }
+    if ( $v == 2){
+    $sql = "select * from usuarios ORDER BY usuario ASC LIMIT ".$num_parse." OFFSET ".$pag;
+    }
     $results= mysql_query($sql);
 
 ?>
@@ -37,6 +46,7 @@
     </nav>
     
     <div class="container">
+        
 
       <table>
         <thead>
@@ -61,11 +71,12 @@
         </tbody>
       </table>
   <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
+    
+    <li id="prev" class="waves-effect"><a href="inicializar.php?v=0&pagina=0"></i>Z-A</a></li>
     <?php for ($i = 0; $i < $div; $i++) { ?>
-    <li id="pagin" class="waves-effect"><a href=inicializar.php?pagina=<?php echo $i; ?>><?php echo $i; ?></a></li>
+    <li id="pagin" class="waves-effect"><a href=inicializar.php?v=<?php echo $v ?>&pagina=<?php echo $i; ?>><?php echo $i; ?></a></li>
     <?php } ?>
-    <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
+    <li id="prev" class="waves-effect"><a href="inicializar.php?v=2&pagina=0"><i class="material-icons"></i>A-Z</a></li>
   </ul>
 
     </div>

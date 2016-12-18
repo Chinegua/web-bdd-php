@@ -12,8 +12,9 @@
     $div = round($div,0);
     $div; //Numero de paginas que vamos a usar
     $pagina=($_GET['pagina']);
+    $v=($_GET['v']);
     
     
-    header('Location:listado.php?div='.$div.'&num_parse='.$num_parse.'&count='.$count.'&pagina='.$pagina);
-    
+    header('Location:listado.php?v='.$v.'&div='.$div.'&num_parse='.$num_parse.'&count='.$count.'&pagina='.$pagina);
+
 ?>
