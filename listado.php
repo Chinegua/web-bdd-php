@@ -1,5 +1,7 @@
 <?php 
+    
     session_start();//crea una sesión para ser usada mediante una petición GET o POST, o pasado por una cookie y la sentencia include_once es la usaremos para incluir el archivo de conexión a la base de datos que creamos anteriormente.
+    //$session[""]
     include_once "conexion.php"; 
     $div=($_GET['div']);
     $num_parse=($_GET['num_parse']);
@@ -7,13 +9,13 @@
     $v=($_GET['v']);
     $pag = $pagina * $num_parse;
     if ( $v == 0){
-    $sql = "select * from usuarios ORDER BY usuario DESC LIMIT ".$num_parse." OFFSET ".$pag;
+    $sql = "select * from u_p ORDER BY m_mail DESC LIMIT ".$num_parse." OFFSET ".$pag;
     }
     if ( $v == 1){
-    $sql = "select * from usuarios LIMIT ".$num_parse." OFFSET ".$pag;
+    $sql = "select * from u_p LIMIT ".$num_parse." OFFSET ".$pag;
     }
     if ( $v == 2){
-    $sql = "select * from usuarios ORDER BY usuario ASC LIMIT ".$num_parse." OFFSET ".$pag;
+    $sql = "select * from u_p ORDER BY m_mail ASC LIMIT ".$num_parse." OFFSET ".$pag;
     }
     $results= mysql_query($sql);
 
@@ -36,11 +38,12 @@
     
     <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Logo</a>
+          <a href="log_out.php" class="brand-logo"><?PHP echo $_SESSION[usuario]?></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.php">Registro</a></li>
             <li><a href="inicializar.php">Listado</a></li>
             <li><a href="busqueda.php">Busqueda</a></li>
+            <li><a href="login-php.php">Log-in</a></li>
           </ul>
         </div>
     </nav>
@@ -52,7 +55,7 @@
         <thead>
           <tr>
             <th data-field="idusuario">ID</th>
-            <th data-field="usuario">Nombre</th>
+            <th data-field="usuario">E-Mail</th>
             <th data-field="password">Password</th>
           </tr>
         </thead>

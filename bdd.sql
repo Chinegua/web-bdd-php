@@ -1,6 +1,6 @@
-CREATE TABLE `usuarios` ( 
+CREATE TABLE `u_p` ( 
   `idusuario` INT(11) NOT NULL AUTO_INCREMENT, 
-  `usuario` VARCHAR(20) NOT NULL, 
-  `password` VARCHAR(10) NOT NULL, 
+  `m_mail` VARCHAR(50) NOT NULL, 
+  `contra_pass` VARCHAR(10) NOT NULL, 
   PRIMARY KEY  (`idusuario`) 
 );

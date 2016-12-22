@@ -25,11 +25,12 @@ include_once "conexion.php";
     
     <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Logo</a>
+          <a href="log_out.php" class="brand-logo"><?PHP echo $_SESSION[usuario]?></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.php">Registro</a></li>
             <li><a href="inicializar.php">Listado</a></li>
             <li><a href="busqueda.php">Busqueda</a></li>
+            <li><a href="log-in.php">Log-in</a></li>
           </ul>
         </div>
     </nav>

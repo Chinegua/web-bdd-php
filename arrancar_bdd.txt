@@ -1,1 +1,7 @@
 https://community.c9.io/t/setting-up-mysql/1718
+
+
+nombre de tabla: u_p
+atributo id: idusuario
+atributo de email:m_mail
+atributo password: contra_pass

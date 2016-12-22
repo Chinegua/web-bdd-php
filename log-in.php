@@ -5,21 +5,17 @@
     if(isset($_POST['enviar'])){
         $usuario = $_POST['usuario']; 
         $password = $_POST['password'];
-        $password = filter_var($password, FILTER_SANITIZE_MAGIC_QUOTES);
-        $password = filter_var($password, FILTER_SANITIZE_STRING);
-        echo $password;
-        if (filter_var($usuario, FILTER_VALIDATE_EMAIL)){
-            if($_POST['password'] == $_POST['repassword']){ 
+        $sql = "select * from u_p where m_mail=\"".$usuario."\" AND contra_pass=\"".$password."\"   LIMIT 1";
+        $results= mysql_query($sql);
+        $row = mysql_fetch_row($results);
         
-            $sql = "INSERT INTO u_p (m_mail,contra_pass) VALUES ('$usuario','$password')";//Se insertan los datos a la base de datos y el usuario ya fue registrado con exito.
-            mysql_query($sql); 
-            echo '<script language="javascript">alert("REGISTRADO");</script>';
-            }else{
-                echo '<script language="javascript">alert("Contraseñas introducidas no coinciden");</script>';
-            };
-        }else{
-            echo '<script language="javascript">alert("Mail no valido");</script>';
+        if($row[0]==NULL){
+            echo '<script language="javascript">alert("Este usuario no existe");</script>';
         }
+        else{
+            $_SESSION[usuario]=$usuario;
+            
+        };
         
     };
 ?>
@@ -42,7 +38,7 @@
             <li><a href="index.php">Registro</a></li>
             <li><a href="inicializar.php?v=1&pagina=0">Listado</a></li>
             <li><a href="busqueda.php">Busqueda</a></li>
-            <li><a href="log-in.php">Log-in</a></li>
+            <li><a href="log-in.php">Log</a></li>
           </ul>
         </div>
     </nav>
@@ -55,10 +51,8 @@
         <input type="text" name="usuario"></div> 
         <div><label>Clave:</label> 
         <input type="password" name="password"></div> 
-        <div><label>Repetir Clave:</label> 
-        <input type="password" name="repassword"></div> 
         <div> 
-        <input class="waves-effect waves-light btn-large" type="submit" name="enviar" value="Registrar"></div> 
+        <input class="waves-effect waves-light btn-large" type="submit" name="enviar" value="Log-i"></div> 
     </form>
     
     

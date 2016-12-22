@@ -2,14 +2,14 @@
 session_start();//crea una sesión para ser usada mediante una petición GET o POST, o pasado por una cookie y la sentencia include_once es la usaremos para incluir el archivo de conexión a la base de datos que creamos anteriormente.
 include_once "conexion.php"; 
 $id=($_GET['id']);
-$sql = "SELECT * FROM usuarios WHERE idusuario = '$id'";
+$sql = "SELECT * FROM u_p WHERE idusuario = '$id'";
 $results= mysql_query($sql);
 $row = mysql_fetch_row($results);
 
 if(isset($_POST['modificar'])){
         $usuario = $_POST['usuario']; 
         $password = $_POST['password']; 
-        $sql = "UPDATE usuarios set usuario =\" ".$usuario."\" , password =\" ".$password."\"  WHERE idusuario =\" ".$id."\" ";//Se insertan los datos a la base de datos y el usuario ya fue registrado con exito.
+        $sql = "UPDATE u_p set m_mail =\" ".$usuario."\" , contra_pass =\" ".$password."\"  WHERE idusuario =\" ".$id."\" ";//Se insertan los datos a la base de datos y el usuario ya fue registrado con exito.
         mysql_query($sql); 
         header("Location:inicializar.php");
         
@@ -30,10 +30,11 @@ if(isset($_POST['modificar'])){
     
     <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Logo</a>
+          <a href="log_out.php" class="brand-logo"><?PHP echo $_SESSION[usuario]?></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.php">Registro</a></li>
             <li><a href="inicializar.php?pagina=0">Listado</a></li>
+            <li><a href="log-in.php">Log-in</a></li>
           </ul>
         </div>
     </nav>
@@ -42,7 +43,7 @@ if(isset($_POST['modificar'])){
       <br>      
     
     <form action="" method="post" class="registro"> 
-        <div><label>Usuario:</label> 
+        <div><label>E-mail:</label> 
         <input value="<?php echo $row[1]?>" type="text" name="usuario"></div> 
         <div><label>Clave:</label> 
         <input value="<?php echo $row[2]?>" type="password" name="password"></div> 
